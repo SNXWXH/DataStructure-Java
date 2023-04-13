@@ -44,12 +44,28 @@ class LinkedTree{
 //        if(node.right != null)postorder(node.right);
 //        System.out.print(node.data+" ");
     }
+    public int size(BtNode node){
+        int size = 0;
+        if(node != null){
+            return 1+size(node.left)+size(node.right);
+        }
+        return 0;
+    }
+    public int height(BtNode node){
+        int height = 0;
+        if(node != null){
+            return height(node.left) >= height(node.right) ? 1+height(node.left) : 1+height(node.right);
+            //return 1+Math.max(height(node.left), height(node.right));
+        }
+        return 0;
+    }
 }
 
 public class Ex_BT1 {
     public static void main(String[] args){
         LinkedTree t = new LinkedTree();
-        BtNode n4 = t.makeTree(null, 'D', null);
+        BtNode n7 = t.makeTree(null, 'G', null);
+        BtNode n4 = t.makeTree(n7, 'D', null);
         BtNode n5 = t.makeTree(null, 'E', null);
         BtNode n6 = t.makeTree(null, 'F', null);
         BtNode n2 = t.makeTree(n4, 'B', n5);
@@ -63,6 +79,10 @@ public class Ex_BT1 {
         System.out.println();
         System.out.print("PostOrder ==> ");
         t.postorder(n1);
+        System.out.println();
+        System.out.print("현재 트리의 노드 수 ==> "+t.size(n1));
+        System.out.println();
+        System.out.print("현재 트리의 높이 ==> "+t.height(n1));
         System.out.println();
     }
 }
