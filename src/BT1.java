@@ -1,4 +1,3 @@
-package practice;
 class Node_B1{
     char data;
     //생성자 생성
