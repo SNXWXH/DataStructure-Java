@@ -1,5 +1,3 @@
-package practice;
-
 class BtNode{
     char data;
     //생성자 생성
@@ -26,9 +24,9 @@ class LinkedTree{
     }
     public void inorder(BtNode node){
         if(node != null){
-            if(node.left != null) inorder(node.left);
+            inorder(node.left);
             System.out.print(node.data+" ");
-            if(node.right != null)inorder(node.right);
+            inorder(node.right);
         }
 //        if(node.left != null) inorder(node.left);
 //        System.out.print(node.data+" ");
@@ -36,8 +34,8 @@ class LinkedTree{
     }
     public void postorder(BtNode node){
         if(node != null){
-            if(node.left != null) postorder(node.left);
-            if(node.right != null)postorder(node.right);
+            postorder(node.left);
+            postorder(node.right);
             System.out.print(node.data+" ");
         }
 //        if(node.left != null) postorder(node.left);
