@@ -7,6 +7,7 @@ class QList01{
 
     public void enQueue(int item){
         if((front%arr.length) == (rear+1)%arr.length)
+        //if((rear+1) % arr.length == front)
             System.out.println("큐가 다 찼습니다");
         else{
             rear = (rear +1)%arr.length;
