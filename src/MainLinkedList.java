@@ -34,7 +34,8 @@ class LinkedList1 {
             printList();
     }
     void deleteLast(){
-        if(head == null) System.out.println("연결리스트가 비어있습니다");
+        if(head == null)
+            System.out.println("연결리스트가 비어있습니다");
         else{
            point = head;
            Node temp = point;
