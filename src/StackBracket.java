@@ -19,7 +19,7 @@ class StackList1{
         }
         else{
             size--;
-            char ch = stack[size -1];
+            char ch = stack[size];
             return ch;
         }
 
