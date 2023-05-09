@@ -1,11 +1,12 @@
 class TreeNode{
     int key;
-    TreeNode left, right;
+    TreeNode left, right, parent;
 
     public TreeNode(int key){
         this.key = key;
         this.left = null;
         this.right = null;
+        this.parent = null;
     }
 }
 
@@ -91,6 +92,47 @@ public class BST {
             return getMax(node.right);
     }
 
+//    public void delete(int key){
+//        TreeNode p = search(key);
+//        if(p==null) return;
+//        delete(p, key);
+//    }
+
+    public void delete(TreeNode p, int key){
+        TreeNode parent = p.parent;
+        //자식이 없는 경우
+        if(p.left == null && p.right == null){
+            if(parent.left == p)
+                parent.left = null;
+            else
+                parent.right = null;
+        }
+        //자식이 있는 경우
+        else if(p.left == null || p.right == null){
+            //왼쪽 자식이 있는 경우
+            if(p.left != null){
+                if(parent.left == p)
+                    parent.left = p.left;
+                else parent.right = p.left;
+                p.left.parent = parent;
+            }
+            //오른쪽 자식이 있는 경우
+            else{
+                if(parent.left != p)
+                    parent.left = p.right;
+                else
+                    parent.right = p.right;
+                p.right.parent = parent;
+            }
+        }
+        //자식이 둘 있는 경우
+        else{
+            TreeNode q = getMax(p.left);
+            p.key = q.key;
+            delete(p.left, p.key);
+        }
+
+    }
 
 
     public static void main(String[] args){
